@@ -1,0 +1,30 @@
+<main *ngIf="isVisible; else elseBlock" class="flex justify-center items-center h-screen shadow-xl">
+  <div class="bg-gray-900 rounded-xl w-80 h-96 flex flex-col items-start justify-center p-6   ">
+    <div class="py-8  space-y-7 max-w-xs rounded-xl h-auto text-white flex flex-col items-start justify-start">
+      <div class="rounded-full bg-gray-800 w-12 h-12 flex items-center justify-center">
+        <img src="/img/icon-star.png" alt="icon star" class="w-4 h-4">
+      </div>
+      <h1 class="font-bold text-2xl text-left">How did we do?</h1>
+      <p class="text-xs text-left">
+        Please let us know how we did with your support request. All feedback is appreciated to help us improve our offering!
+      </p>
+
+      <ul class="flex justify-start space-x-2">
+        <li
+          *ngFor="let rating of ratings; let i = index"
+          [ngClass]="{'bg-orange-500': selectedRating === i, 'bg-gray-600': selectedRating !== i}"
+          (click)="selectRating(i)"
+          class="cursor-pointer w-12 h-12 flex items-center justify-center rounded-full hover:bg-white hover:text-black"
+        >
+          {{ rating }}
+        </li>
+      </ul>
+
+      <button (click)="toogleVisibility()" class="bg-orange-500 hover:bg-white font-bold w-full rounded-full text-black p-2 cursor-pointer">SUBMIT</button>
+    </div>
+  </div>
+</main>
+
+<ng-template #elseBlock>
+  <app-verso-card/> 
+</ng-template>
